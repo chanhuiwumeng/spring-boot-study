@@ -1,0 +1,11 @@
+spring:
+  mail:
+    protocol: smtp
+    host: smtp.qq.com
+    username: 523489273@qq.com
+    password: xlkudqcsxmbacabj
+    default-encoding: UTF-8
+    properties:
+      mail:
+        ssl:
+          enable: true

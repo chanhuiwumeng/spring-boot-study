@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.xdkj.beans.Student" table="student">
+        <id column="id" type="java.lang.Integer" name="id">
+            <generator class="identity"></generator>
+        </id>
+        <property name="address" column="address"></property>
+        <property name="department" column="department"></property>
+        <property name="stusex" column="stusex"></property>
+        <property name="stubirth" column="stubirth"></property>
+        <property name="age" column="age"></property>
+    </class>
+</hibernate-mapping>

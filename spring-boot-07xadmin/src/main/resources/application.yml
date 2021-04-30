@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hehe?useEncoding=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT
+    username: root
+    password: root
+ #spring data jpa 配置
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true  #sql语句显示
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL5Dialect
+    database: mysql

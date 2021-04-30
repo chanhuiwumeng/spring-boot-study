@@ -1,0 +1,7 @@
+spring:
+ thymeleaf:
+    cache: false #开发期间禁用缓存
+#    check-template: true #检查模板引擎
+#    check-template-location: true
+#    mode: HTML
+#    encoding: UTF-8

@@ -1,0 +1,17 @@
+
+spring:
+  datasource:
+    password: root
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hehe?useEncoding=true&characterEncoding=utf8&useSSL=true
+#Web应用的名称
+  application:
+    name: mybatis04
+  mvc:
+    servlet:
+      path: /mybatis04 #根路径 默认是/
+mybatis:
+  mapper-locations: classpath:mapper/*Dao.xml
+  type-aliases-package: com.xdkj.beans
+

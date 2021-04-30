@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xdkj.dao.StudentDao">
+
+    <resultMap type="com.xdkj.entity.Student" id="StudentMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="stuname" column="stuname" jdbcType="VARCHAR"/>
+        <result property="stubirth" column="stubirth" jdbcType="VARCHAR"/>
+        <result property="stusex" column="stusex" jdbcType="VARCHAR"/>
+        <result property="department" column="department" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StudentMap">
+        select id,
+               stuname,
+               stubirth,
+               stusex,
+               department,
+               address,
+               age
+        from hehe.student
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StudentMap">
+        select id,
+               stuname,
+               stubirth,
+               stusex,
+               department,
+               address,
+               age
+        from hehe.student limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="StudentMap">
+        select
+        id, stuname, stubirth, stusex, department, address, age
+        from hehe.student
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="stuname != null and stuname != ''">
+                and stuname = #{stuname}
+            </if>
+            <if test="stubirth != null">
+                and stubirth = #{stubirth}
+            </if>
+            <if test="stusex != null and stusex != ''">
+                and stusex = #{stusex}
+            </if>
+            <if test="department != null and department != ''">
+                and department = #{department}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+    <select id="findStudentByIdAndStuname" resultType="com.xdkj.beans.Student"></select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into hehe.student(stuname, stubirth, stusex, department, address, age)
+        values (#{stuname}, #{stubirth}, #{stusex}, #{department}, #{address}, #{age})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into hehe.student(stuname, stubirth, stusex, department, address, age)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.stuname}, #{entity.stubirth}, #{entity.stusex}, #{entity.department}, #{entity.address},
+            #{entity.age})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into hehe.student(stuname, stubirth, stusex, department, address, age)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.stuname}, #{entity.stubirth}, #{entity.stusex}, #{entity.department}, #{entity.address},
+            #{entity.age})
+        </foreach>
+        on duplicate key update
+        stuname = values(stuname) , stubirth = values(stubirth) , stusex = values(stusex) , department =
+        values(department) , address = values(address) , age = values(age)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update hehe.student
+        <set>
+            <if test="stuname != null and stuname != ''">
+                stuname = #{stuname},
+            </if>
+            <if test="stubirth != null">
+                stubirth = #{stubirth},
+            </if>
+            <if test="stusex != null and stusex != ''">
+                stusex = #{stusex},
+            </if>
+            <if test="department != null and department != ''">
+                department = #{department},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from hehe.student
+        where id = #{id}
+    </delete>
+
+</mapper>
+

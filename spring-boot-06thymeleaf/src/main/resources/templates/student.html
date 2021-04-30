@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+    <br>---------th:公共模板 --------<br>
+    <div th:replace="~{index::top}">
+
+    </div>
+    <br>---------th:选择表达式--------<br>
+    <ul th:object="${student}">
+        <li th:text="*{id}"></li>
+        <li th:text="*{name}"></li>
+        <li th:text="*{email}"></li>
+        <li></li>
+    </ul>
+    <br>---------th:超链接 src lin href --------<br>
+    <a href="http://www.baidu.com">百度一下</a>
+    <a th:href="@{http://www.baidu.com}">百度一下</a>
+    <br>---------th:超链接 传参数 --------<br>
+    <a th:href="@{student/{name}/{email}(name=${student.name},email=${student.email})}">百度一下</a>
+    <br>---------th:公共模板 --------<br>
+    <br>---------th:if --------<br>
+    <p th:if="${student == null}">
+        Hello Thymeleaf
+    </p>
+    <h4  th:class="active">Hello SpringBoot</h4>
+    <br>---------th:替换文本 --------<br>
+    <p th:text="|Hello ${student.name}Welcomr to you${student.email} !!!|"></p>
+    <br>---------th:条件表达式 --------<br>
+        <table border="1" cellspacing="0" th:width="600px">
+            <caption>2020年度财务报表</caption>
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>名字</th>
+                <th>邮箱</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:class="${10%2 == 0}?'activetd':''">
+                <td>1011</td>
+                <td>admin</td>
+                <td>admin@qq.com</td>
+            </tr>
+            <tr>
+                <td>1011</td>
+                <td>admin</td>
+                <td>admin@qq.com</td>
+            </tr>
+            <tr>
+                <td>1011</td>
+                <td>admin</td>
+                <td>admin@qq.com</td>
+            </tr>
+            <tr>
+                <td>1011</td>
+                <td>admin</td>
+                <td>admin@qq.com</td>
+            </tr>
+            <tr>
+                <td>1011</td>
+                <td>admin</td>
+                <td>admin@qq.com</td>
+            </tr>
+            </tbody>
+        </table>
+    <hr>
+</body>
+</html>

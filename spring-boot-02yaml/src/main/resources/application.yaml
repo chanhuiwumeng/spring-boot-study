@@ -1,0 +1,30 @@
+ftp:
+  name: ${hello.name}
+  host: ${ftp.name}
+  port: 21
+  #names: lucy,hanmeimei
+  servers:
+    - dev.example.com
+    - another.example.com
+  maps: {"one":"admin"}
+
+hello:
+  name: zhangsan
+
+ # springboot more config profiles
+#spring:
+  #profiles:
+   # active: pro
+
+
+---
+spring:
+  profiles: dev
+server:
+  port: 8088
+
+---
+spring:
+  profiles: pro
+server:
+  port: 8099

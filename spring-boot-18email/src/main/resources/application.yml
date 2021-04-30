@@ -1,0 +1,13 @@
+#配置邮件发送的信息
+spring:
+  mail:
+    host: smtp.qq.com
+    username: 523489273@qq.com
+    default-encoding: UTF-8
+    protocol: smtp
+    password: xlkudqcsxmbacabj  #授权码
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true

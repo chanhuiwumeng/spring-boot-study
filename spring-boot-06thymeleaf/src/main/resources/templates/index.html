@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<!--公共模板-->
+    <div id="top" th:fragment="top">
+        <ul>
+            <li><a href=""></a></li>
+        </ul>
+    </div>
+    <br>---------th:text文本替换--------<br>
+    <h3 th:text="${list}">Hello joke!!!!!</h3>
+    <h3 th:text="${hello}">hello</h3>
+    <input type="text" value="joke" th:value="${admin}">
+    <br>---------th:utext文本替换 text不会解析html 内容 utext会解析html--------<br>
+    <h3 th:text="${list.tag}">Hello joke!!!!!</h3>
+    <h3 th:utext="${list.tag}">Hello joke!!!!!</h3>
+    <br>---------th:变量计算--------<br>
+    <h3 th:text="${list.tag}+'---------'">Hello joke!!!!!</h3>
+
+    <h3 th:text="${list.num}+9999999">Hello joke!!!!!</h3>
+    <br>---------th:基本表达式对象--------<br>
+<!--    <h3 th:text="${#ctx}">Hello joke!!!!!</h3>-->
+    上下文变量:<h3 th:text="${#vars}">hello</h3>
+    request:<h3 th:text="${#request}"></h3>
+    session:<h3 th:text="${#session}"></h3>
+    servletContext:<h3 th:text="${#servletContext}"></h3>
+    <br>---------th:选择表达式--------<br>
+    <hr>
+</body>
+</html>

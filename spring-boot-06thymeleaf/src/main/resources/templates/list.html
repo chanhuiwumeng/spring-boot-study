@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>首页</title>
+</head>
+<body>
+    <br>--------th:循环遍历--------<br>
+    <table border="1" cellspacing="0" th:width="600px">
+        <caption>2020年度财务报表</caption>
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>名字</th>
+            <th>邮箱</th>
+        </tr>
+        </thead>
+        <tbody>
+       <!-- <tr th:each="student:${list}">
+            <td th:text="${student.id}">1011</td>
+            <td th:text="${student.name}">admin</td>
+            <td th:text="${student.email}">admin@qq.com</td>
+        </tr>-->
+       <!--文本占用-->
+       <tr th:each="student:${list}">
+           <td >[[${student.id}]]</td>
+           <td >[[${student.name}]]</td>
+           <td >[[${student.email}]]</td>
+       </tr>
+        </tbody>
+    </table>
+</body>
+</html>
